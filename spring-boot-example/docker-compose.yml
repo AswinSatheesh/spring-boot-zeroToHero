@@ -3,7 +3,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER:
+      POSTGRES_USER: aswin
       POSTGRES_PASSWORD: py38
       PGDATA: /data/postgres
     volumes:
@@ -14,9 +14,9 @@ services:
       - db
     restart: unless-stopped
 
-  networks:
-    db:
-      driver: bridge
+networks:
+  db:
+    driver: bridge
 
-    volumes:
-      db:
+volumes:
+  db:
