@@ -35,6 +35,7 @@ public class Customer {
     }
 
     public Integer getId() {
+
         return id;
     }
 
@@ -42,7 +43,8 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -50,19 +52,23 @@ public class Customer {
         this.name = name;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public Integer getAge() {
+    public Integer getAge()
+    {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Integer age)
+    {
         this.age = age;
     }
 
@@ -75,7 +81,8 @@ public class Customer {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(id, name, email, age);
     }
 

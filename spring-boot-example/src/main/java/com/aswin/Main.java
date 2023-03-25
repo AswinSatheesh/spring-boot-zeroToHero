@@ -15,6 +15,7 @@ public class Main {
     private final CustomerRepository customerRepository;
 
     public Main(CustomerRepository customerRepository) {
+
         this.customerRepository = customerRepository;
     }
 
@@ -24,7 +25,8 @@ public class Main {
     }
 
     @GetMapping
-    public List<Customer> getCustomers(){
+    public List<Customer> getCustomers()
+    {
         return customerRepository.findAll();
     }
 
@@ -47,8 +49,33 @@ public class Main {
 
     @DeleteMapping("{customerId}")
     public void deleteCustomer(@PathVariable("customerId") Integer id){
+
         customerRepository.deleteById(id);
     }
+
+    @PutMapping("{customerId}")
+    public void updateCustomer(@PathVariable("customerId") Integer id, @RequestBody NewCustomerRequest request){
+
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid customer ID"));
+
+        if (Objects.nonNull(request.name())) {
+            customer.setName(request.name());
+        }
+
+        if (Objects.nonNull(request.age())) {
+            customer.setAge(request.age());
+        }
+
+        if (Objects.nonNull(request.email())) {
+            customer.setEmail(request.email());
+        }
+
+        customerRepository.save(customer);
+    }
+
+
+
 
 //    @GetMapping("/greet")
 //    public GreetResponse greet()
